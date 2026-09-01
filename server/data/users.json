@@ -1,0 +1,29 @@
+[
+  {
+    "id": "03d4f55a-5de3-4d81-849e-ba6a561970be",
+    "username": "admin",
+    "email": "admin@company.com",
+    "password": "$2b$10$ciKUcQP1AEqab9N2VHSPt.gy1jsOIDexchVwX/A9cYpywOqPZ5rLi",
+    "role": "admin",
+    "employeeId": null,
+    "createdAt": "2026-04-02T16:29:15.669Z"
+  },
+  {
+    "id": "426367d8-2968-4308-824f-11ff8ecbf6c7",
+    "username": "hrmanager",
+    "email": "ananya.gupta@company.com",
+    "password": "$2b$10$ox6hazhYbinxwCF7kMkZ1uTFniGmcuuxlBFbcgQ8H/355eBvxmrpa",
+    "role": "hr",
+    "employeeId": "5949dd85-cca0-4224-88c6-9857adb6388f",
+    "createdAt": "2026-04-02T16:29:15.669Z"
+  },
+  {
+    "id": "717d7ebf-4cb8-44fd-9395-3a0be4b21b33",
+    "username": "employee1",
+    "email": "aarav.sharma@company.com",
+    "password": "$2b$10$o5qt1evkli6e3.OIlnmw8.fBTRr3JN6z1.d0pzYt0wS8LceUQaKkK",
+    "role": "employee",
+    "employeeId": "87418645-e2f6-4f29-80b0-0fd6c7d633ee",
+    "createdAt": "2026-04-02T16:29:15.669Z"
+  }
+]

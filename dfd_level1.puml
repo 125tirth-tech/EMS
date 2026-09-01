@@ -1,0 +1,66 @@
+@startuml EMS_DFD_Level1
+skinparam monochrome true
+skinparam shadowing false
+skinparam dpi 300
+title Employee Management System\nDFD Level 1
+
+' External Entities
+actor "Admin\nHR" as Admin #lightblue
+actor "Employee\nUser" as Employee #lightgreen
+rectangle "Web\nClient" as Client #lightyellow
+
+' Data Stores
+storage "D1:\nUsers" as D1
+storage "D2:\nEmployees" as D2
+storage "D3:\nAttendance" as D3
+storage "D4:\nLeaves" as D4
+storage "D5:\nPayroll" as D5
+storage "D6:\nDocuments" as D6
+storage "D7:\nNotifications" as D7
+
+' Processes
+circle "1.0\nUser\nAuth" as P1
+circle "2.0\nManage\nEmployees" as P2
+circle "3.0\nAttendance\nTracking" as P3
+circle "4.0\nLeave\nManagement" as P4
+circle "5.0\nPayroll\nProcessing" as P5
+circle "6.0\nDocuments\nMgmt" as P6
+circle "7.0\nNotifications" as P7
+
+' Data Flows
+Client -> P1 : Login Req\nCredentials
+P1 -> D1 : Verify User
+D1 -> P1 : User Data\nJWT Token
+P1 -> Client : Auth Token\nSession
+
+Admin -> P2 : CRUD Req\n(Employee Data)
+P2 <-> D2 : Employee Records
+P2 -> Client : Employee List\nDetails
+
+Employee -> P3 : Check-in/out
+P3 <-> D3 : Attendance Record
+P3 -> Client : Today Status\nHistory
+
+Employee -> P4 : Leave Apply
+P4 <-> D4 : Leave Request
+Admin <-> P4 : Approve/Reject
+P4 -> D7 : Status Notification
+
+Admin -> P5 : Generate Payroll
+P5 <-> D2 : Salary Base
+P5 <-> D3 : Attendance Data
+P5 <-> D5 : Payroll Record
+P5 -> Client : Payslips
+P5 -> D7 : Payment Notice
+
+Employee <-> P6 : Upload/Download
+Admin <-> P6 : Manage Files
+P6 <-> D6 : Document Files
+P6 -> Client : File Access
+
+P7 <-> D7 : Notification Data
+P7 -> Client : Unread Count\nMessages
+Admin -> P7 : Send Broadcast
+
+@enduml
+
