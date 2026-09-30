@@ -4,6 +4,15 @@ A comprehensive, full-stack Employee Management System built with Node.js, Expre
 
 ## 🚀 Features
 
+### 🤖 AI Assistant
+- **Conversational HR Copilot**: Role-aware AI assistant powered by Google Gemini API (`GEMINI_API_KEY`) with seamless smart fallback.
+- **Natural Language Actions**: Check leave balance, check-in / check-out, view latest payslips, and query company handbook policies.
+- **Interactive Action Cards**: Inline leave approval/rejection cards for HR, leave breakdown chips, attendance status cards, and payslip breakdowns.
+- **Voice Support**: 🎙️ Speech-to-Text (microphone input) and 🔊 Text-to-Speech (voice narration) via Web Speech API.
+- **🔥 Employee Wellbeing & Burnout Risk Predictor**: Evaluates overtime hours, late arrival patterns, and leave deficits to compute fatigue/attrition risk scores and actionable retention recommendations.
+- **✨ AI Content Studio**: One-click generation of Job Descriptions (JDs), Employee Performance Appraisal Reviews, and Company Announcements.
+- **📖 Smart HR Knowledge Base**: Interactive searchable handbook for working hours, probation, leave rules, and code of conduct.
+
 ### Authentication & Authorization
 - JWT-based authentication (login, signup, password reset)
 - Role-based access control (Admin, HR, Employee)
@@ -220,6 +229,14 @@ EMS/
 - `GET /api/documents/:id/download` - Download
 - `DELETE /api/documents/:id` - Delete (admin/HR)
 
+### AI Assistant
+- `POST /api/ai/chat` - Conversational copilot with action execution
+- `GET /api/ai/history` - Retrieve user conversation history
+- `DELETE /api/ai/history` - Clear conversation history
+- `GET /api/ai/policies` - Retrieve company policy handbook
+- `GET /api/ai/burnout-risk` - Calculate employee burnout & retention risk metrics (admin/HR)
+- `POST /api/ai/generate` - Draft JDs, performance reviews, or announcements with Gemini AI (admin/HR)
+
 ---
 
 ## 🎨 Tech Stack
@@ -232,5 +249,5 @@ EMS/
 
 ---
 
-
+        
 Built with ❤️ by dhoop

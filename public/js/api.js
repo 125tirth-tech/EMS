@@ -152,3 +152,14 @@ const DocumentAPI = {
   download: (id) => api.get(`/documents/${id}/download`),
   remove: (id) => api.delete(`/documents/${id}`)
 };
+
+// ─── AI & HR Innovation API ─────────────────────────────────
+const AiAPI = {
+  chat: (message) => api.post('/ai/chat', { message }),
+  getHistory: () => api.get('/ai/history'),
+  clearHistory: () => api.delete('/ai/history'),
+  getPolicies: () => api.get('/ai/policies'),
+  getBurnoutRisk: () => api.get('/ai/burnout-risk'),
+  generate: (type, payload) => api.post('/ai/generate', { type, payload })
+};
+

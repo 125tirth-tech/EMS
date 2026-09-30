@@ -12,6 +12,7 @@ const leaveRoutes = require('./routes/leaves');
 const payrollRoutes = require('./routes/payroll');
 const notificationRoutes = require('./routes/notifications');
 const documentRoutes = require('./routes/documents');
+const aiRoutes = require('./routes/ai');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/leaves', leaveRoutes);
 app.use('/api/payroll', payrollRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/ai', aiRoutes);
 
 // SPA fallback — serve index.html for all non-API routes
 app.use((req, res, next) => {

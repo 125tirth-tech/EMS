@@ -218,6 +218,12 @@ const App = {
 
     html += `
       </div>
+      <div class="nav-section">
+        <div class="nav-section-title">AI</div>
+        <div class="nav-item" onclick="App.navigate('ai-assistant')" data-page="ai-assistant">
+          <span class="nav-icon">🤖</span> AI Assistant
+        </div>
+      </div>
     `;
 
     if (isEmployee) {
@@ -251,6 +257,7 @@ const App = {
       payroll: ['Payroll', 'Salary management'],
       documents: ['Documents', 'Document management'],
       profile: ['My Profile', 'View your profile details'],
+      'ai-assistant': ['AI Assistant', 'Intelligent conversational assistant and HR analytics'],
       'employee-detail': ['Employee Details', 'View employee information'],
       'employee-form': ['Employee Form', data ? 'Edit employee' : 'Add new employee']
     };
@@ -274,6 +281,7 @@ const App = {
       payroll: () => PayrollPage.render(),
       documents: () => DocumentsPage.render(),
       profile: () => ProfilePage.render(),
+      'ai-assistant': () => AiAssistantPage.render(),
       'employee-detail': () => EmployeeDetailPage.render(data),
       'employee-form': () => EmployeeFormPage.render(data)
     };
