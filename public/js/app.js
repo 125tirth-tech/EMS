@@ -6,8 +6,11 @@ const App = {
   currentPage: null,
   user: null,
   notificationInterval: null,
+  theme: 'light',
 
   init() {
+    this.theme = localStorage.getItem('ems_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', this.theme);
     this.user = this.getUser();
     if (this.user) {
       this.renderApp();
@@ -15,6 +18,17 @@ const App = {
     } else {
       this.renderAuth();
     }
+  },
+
+  toggleTheme() {
+    this.theme = this.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', this.theme);
+    localStorage.setItem('ems_theme', this.theme);
+    const btns = document.querySelectorAll('.theme-toggle-btn');
+    btns.forEach(btn => {
+      btn.textContent = this.theme === 'dark' ? '☀️' : '🌙';
+    });
+    this.showToast(`Switched to ${this.theme === 'dark' ? 'Dark' : 'White & Blue'} theme`, 'info');
   },
 
   getUser() {
@@ -94,7 +108,13 @@ const App = {
 
   // ─── Auth Page ──────────────────────────────────────────
   renderAuth() {
-    document.getElementById('app').innerHTML = '';
+    document.getElementById('app').innerHTML = `
+      <div style="position:fixed;top:1.25rem;right:1.5rem;z-index:100">
+        <button class="theme-toggle-btn" onclick="App.toggleTheme()" id="auth-theme-toggle" title="Toggle Light/Dark Theme">
+          ${this.theme === 'dark' ? '☀️' : '🌙'}
+        </button>
+      </div>
+    `;
     AuthPage.render();
   },
 
@@ -138,6 +158,9 @@ const App = {
               </div>
             </div>
             <div class="top-bar-actions">
+              <button class="theme-toggle-btn" onclick="App.toggleTheme()" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+                ${this.theme === 'dark' ? '☀️' : '🌙'}
+              </button>
               <div class="notification-bell" onclick="App.toggleNotifications()" id="notif-bell">
                 🔔
                 <span class="badge hidden" id="notif-badge">0</span>

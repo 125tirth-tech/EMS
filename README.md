@@ -59,8 +59,9 @@ A comprehensive, full-stack Employee Management System built with Node.js, Expre
 - Per-employee document listing
 
 ### UI/UX
-- Modern dark glassmorphism design with animated gradient backgrounds
-- Responsive layout (mobile-friendly sidebar)
+- **Executive White & Blue Theme** (default) with crisp white surfaces, soft slates, and royal blue accents
+- **Theme Switcher**: ☀️ Light (White & Blue) / 🌙 Dark mode toggle in top bar and login page
+- Responsive layout (mobile-friendly sidebar with drawer navigation)
 - Toast notifications for user actions
 - Loading states and error handling
 - Interactive charts (department distribution, status donut)

@@ -6,6 +6,12 @@
   <meta name="description" content="EMS Pro - Advanced Employee Management System with attendance, leave, payroll, and document management">
   <title>EMS Pro - Employee Management System</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <script>
+    (function() {
+      const theme = localStorage.getItem('ems_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>

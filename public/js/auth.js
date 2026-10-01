@@ -9,6 +9,11 @@ const AuthPage = {
   render() {
     document.getElementById('app').innerHTML = `
       <div class="auth-container">
+        <div style="position:fixed;top:1.25rem;right:1.25rem;z-index:100;">
+          <button class="theme-toggle-btn" onclick="App.toggleTheme()" id="auth-theme-toggle" title="Toggle Light/Dark Theme">
+            ${App.theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+        </div>
         <div class="auth-card fade-in-up">
           <div class="logo">
             <h1>⚡ EMS Pro</h1>
