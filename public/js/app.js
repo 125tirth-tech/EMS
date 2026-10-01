@@ -158,9 +158,6 @@ const App = {
               </div>
             </div>
             <div class="top-bar-actions">
-              <button class="theme-toggle-btn" onclick="App.toggleTheme()" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
-                ${this.theme === 'dark' ? '☀️' : '🌙'}
-              </button>
               <div class="notification-bell" onclick="App.toggleNotifications()" id="notif-bell">
                 🔔
                 <span class="badge hidden" id="notif-badge">0</span>
