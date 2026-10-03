@@ -246,7 +246,8 @@ EMS/
 - **Database**: MongoDB
 - **Auth**: JWT + bcrypt
 - **Frontend**: Vanilla HTML/CSS/JS SPA
-- **Design**: Dark glassmorphism with Inter font
+- **Design**: Executive White & Blue SaaS theme (with light/dark theme switcher) & Inter font
+- **AI Engine**: Google Gemini API with intelligent offline fallback
 
 ---
 
