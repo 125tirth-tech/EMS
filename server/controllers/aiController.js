@@ -48,7 +48,16 @@ async function callGemini(messages, systemInstruction) {
     return null;
   }
 
-  // Model list: try gemini-1.5-flash or gemini-2.5-flash / gemini-2.0-flash
+  // Google AI Studio Gemini API keys start with 'AIzaSy'
+  if (!apiKey.startsWith('AIzaSy')) {
+    if (!global._geminiKeyWarned) {
+      console.warn('⚠️ [AI Assistant] GEMINI_API_KEY is not a valid Google AI Studio key (must start with "AIzaSy..."). Using built-in intelligent HR assistant.');
+      global._geminiKeyWarned = true;
+    }
+    return null;
+  }
+
+  // Model list: try gemini-1.5-flash or gemini-2.0-flash / gemini-2.5-flash
   const models = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-2.5-flash'];
   
   for (const model of models) {
@@ -83,6 +92,9 @@ async function callGemini(messages, systemInstruction) {
       if (!res.ok) {
         const errorText = await res.text();
         console.warn(`Gemini call to ${model} returned status ${res.status}:`, errorText);
+        if (res.status === 400 && errorText.includes('API_KEY_INVALID')) {
+          break; // Stop retrying other models with an invalid key
+        }
         continue; // try next model if failed
       }
 
@@ -392,7 +404,7 @@ ${action ? `Note: A structured action card of type "${action.type}" will be show
       finalBotMessage = geminiReply;
     } else if (!finalBotMessage) {
       // Smart default when no API key and no specific intent matched
-      finalBotMessage = `Hello! I am your **EMS Pro AI Assistant**.\n\nI can help you with:\n- 🏖️ **Leaves**: Check your leave balance or learn how to apply for leave\n- ⏰ **Attendance**: Check today's clock-in status, clock in, or clock out\n- 💰 **Payroll**: Inquire about your salary breakdown and latest payslip\n- 📖 **HR Policies**: Ask about working hours, probation, leave rules, or code of conduct\n${userRole !== 'employee' ? '- 👥 **HR Tools**: Review pending leaves, check absentees, and workforce analytics' : ''}\n\n*Tip: You can configure your GEMINI_API_KEY in .env to unlock advanced generative conversations!*`;
+      finalBotMessage = `Hello! I am your **EMS Pro AI Assistant**.\n\nI can help you with:\n- 🏖️ **Leaves**: Check your leave balance or learn how to apply for leave\n- ⏰ **Attendance**: Check today's clock-in status, clock in, or clock out\n- 💰 **Payroll**: Inquire about your salary breakdown and latest payslip\n- 📖 **HR Policies**: Ask about working hours, probation, leave rules, or code of conduct\n${userRole !== 'employee' ? '- 👥 **HR Tools**: Review pending leaves, check absentees, and workforce analytics' : ''}\n`;
     }
 
     // Save bot reply to AIChat history

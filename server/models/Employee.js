@@ -92,3 +92,4 @@ employeeSchema.index({ firstName: 'text', lastName: 'text', email: 'text', posit
 const Employee = mongoose.model('Employee', employeeSchema);
 
 module.exports = Employee;
+ 

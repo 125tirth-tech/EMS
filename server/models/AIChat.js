@@ -46,3 +46,7 @@ aiChatSchema.index({ userId: 1, createdAt: 1 });
 const AIChat = mongoose.model('AIChat', aiChatSchema);
 module.exports = AIChat;
 
+
+
+
+
